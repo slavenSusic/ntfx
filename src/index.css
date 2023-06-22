@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.slick-arrow {
+    margin-right: 10px;
+}
+
+.slick-list .slick-slide:nth-child(odd) {
+	background-color: #ccc;
+}
+.slick-arrow {
+	z-index: 1;
+	width: 40px;
+	height: 40px;
+}
+html {
+	background-color: #111827;
+}
+
+.slick-arrow:before {
+	font-size: 30px;
+}
+.slick-next {
+	right: 0;
+}
+.slick-prev {
+	left: 0;
+}
+
+.btn-wrap {
+	text-align: center;
+	width: 100%;
+}
+
+button.slick-disabled {
+	opacity: 0.6;
+}
