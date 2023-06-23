@@ -23,8 +23,10 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 function App() {
   const router = createBrowserRouter (createRoutesFromElements(
     
-    <Route path="/" element={<RootLayout />}>
-
+    <Route element={
+    
+    <RootLayout />}>
+<Route path="/" element={<LogIn />} />
    
       <Route path="/movies" element={
       <ProtectedRoute>
