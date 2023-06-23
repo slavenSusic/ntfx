@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { userAuth } from "../context/AuthContext";
 function Navbar() {
@@ -7,7 +7,7 @@ function Navbar() {
   const handleLogout = async () => {
     try {
       await logOut();
-      Navigate = navigate("/logIn");
+      navigate("/logIn");
     } catch (error) {
       console.log(error);
     }
