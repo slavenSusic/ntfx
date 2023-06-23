@@ -3,11 +3,11 @@ import logo from "../assets/logo.png";
 import { userAuth } from "../context/AuthContext";
 function Navbar() {
   const { user, logOut, userData } = userAuth();
-  const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       await logOut();
-      navigate("/logIn");
+      useNavigate("/logIn");
     } catch (error) {
       console.log(error);
     }
