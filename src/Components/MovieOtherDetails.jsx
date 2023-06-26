@@ -25,7 +25,7 @@ function MoviesOtherDetails() {
     return <p>Loading...</p>;
   }
 
-  const {media_type , poster_path,title, backdrop_path, overview, release_date,vote_average } = movieDetails;
+  const {tagline, media_type , poster_path,title, backdrop_path, overview, release_date,vote_average } = movieDetails;
 
   return (
     <>
@@ -33,11 +33,14 @@ function MoviesOtherDetails() {
       media={media_type}
       poster={poster_path}
         title={title}
-        backgroundImage={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
+        backgroundImage={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
         overview={overview}
         release={release_date}
         id={id}
         vote_average={vote_average}
+        release_date={release_date}
+        tagline={tagline}
+
      
       />
     </>

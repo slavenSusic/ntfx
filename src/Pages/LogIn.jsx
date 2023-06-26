@@ -4,6 +4,7 @@ import { userAuth } from '../context/AuthContext';
 import Snackbar from '@mui/material/Snackbar';
 import { Alert } from '@mui/material';
 import background from "../assets/netflix-bg.jpg";
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const LogIn = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -24,11 +25,15 @@ const LogIn = () => {
     e.preventDefault();
     setError('')
     try {
-      await logIn(email, password)
-      navigate('/movies')
+      const auth = getAuth();
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      const token = await user.getIdToken();
+      sessionStorage.setItem('authToken', token);
+      setOpenSnackbar(true);
+      navigate('/movies');
     } catch (error) {
       console.log(error);
-      setError(error.message)
+      setError(error.message);
     }
   };
 

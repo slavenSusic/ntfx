@@ -30,16 +30,16 @@ return (
     <>
     <div className="w-full bg-slate-900 relative">
          <div className='flex flex-row-reverse'>
-         <div className="pl-5 absolute top-[180px] left-[50px]  text-white text-2xl z-10 m-w-[500px]">
+         <div className="pl-5 absolute top-[60px] left-[50px]  text-white text-2xl z-10 m-w-[500px]">
            <div className='flex justify-left items-center '>
-             <h2 className='text-6xl'>{randomMovie.name}</h2> <span className='py-2'></span>
+             <h2 className='text-6xl py-4 '>{randomMovie.name}</h2> <span className='py-2'></span>
              
              </div>
              <p className='text-4xl'>{randomMovie.original_name} <p className='text-2xl'>Origin country : [{randomMovie.origin_country}]</p></p> 
    <div className='py-10'>
      <div className='flex'>
              <p className=''> <span className='pl-5 mr-5'> Score: </span> <span className="text-green-500 relative ">{randomMovie.vote_average.toFixed(1)}</span></p>
-            <span className='absolute top-[155px] left-[114px] '><CircularProgress 
+            <span className='absolute top-[188px] left-[114px] '><CircularProgress 
               variant="determinate" 
               size="4rem"
               {...props}
@@ -80,7 +80,7 @@ return (
          <div className="relative  w-2/3">
            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent"></div>
            <img
-             src={`https://image.tmdb.org/t/p/w500/${randomMovie.backdrop_path}`}
+             src={`https://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
              alt={randomMovie.title}
              className="w-full h-4/3"
              

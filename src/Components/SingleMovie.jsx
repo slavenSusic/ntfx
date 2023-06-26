@@ -5,6 +5,8 @@ import { useWatchlistStore } from "../utility/WatchListStore";
 import Snackbar from "@mui/material/Snackbar";
 import { Alert } from "@mui/material";
 
+//ova komponenta je i SingleMovie i SingleTVshow u jednoj
+
 function SingleMovie({
   media,
   poster,
@@ -20,6 +22,7 @@ function SingleMovie({
   tagline,
   type,
   id,
+  release_date,
 }) {
   const addToWatchlist = useWatchlistStore((state) => state.addToWatchlist);
 
@@ -35,10 +38,8 @@ function SingleMovie({
     try {
       let apiUrl = "";
       if (name) {
-        
         apiUrl = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=b8265fde483da20f23c22850f82f6872`;
       } else {
-        
         apiUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=b8265fde483da20f23c22850f82f6872`;
       }
 
@@ -57,6 +58,7 @@ function SingleMovie({
     if (reason === "clickaway") {
       return;
     }
+    setOpenSnackbar(false);
   };
 
   const handleAddToWatchlist = () => {
@@ -66,13 +68,9 @@ function SingleMovie({
 
   return (
     <div className="w-full bg-slate-900 relative flex flex-col-reverse ">
-      <button onClick={() => setOpenSnackbar(true)}>
-        Open simple snackbar
-      </button>
-
       <Snackbar
         open={openSnackbar}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
       >
@@ -92,7 +90,7 @@ function SingleMovie({
       <div className="flex flex-col-reverse">
         <div className=" text-white text-center z-10 lg:flex flex-col items-start">
           <div className="">
-            <h2 className="pt-5 font-bold text-4xl md:text-4xl lg:text-left lg:pl-10 lg:pt- lg:text-6xl">
+            <h2 className="pt-5 font-bold text-5xl md:text-4xl lg:text-left lg:pl-10 lg:pt- lg:text-6xl">
               {name} {title}
             </h2>
 
@@ -122,21 +120,35 @@ function SingleMovie({
             </div>
 
             <div className="">
-              <p className=" text-left px-10 text-2xl md:text-3xl md:py-5 md:pl-10 lg: max-w-[900px]">
-                {overview.toString().split(/\s+/).slice(0, 20).join(" ")}...
+              <p className=" text-center text-2xl lg:w-[700px] lg:text-left  md:text-3xl md:py-5 md:pl-10 lg: max-w-[900px]">
+                {overview.toString().split(/\s+/).slice(0, 15).join(" ")}...
               </p>
-              <p className="text-left pl-16 text-2xl py-10">{tagline}</p>
-              <div className="flex gap-5">
-                <p className="text-left pl-16">
-                  {seasons && <p>Seasons {seasons} </p>}
-                </p>
-                
-
-                {first_air_date ? <p className="flex gap-5"> <p>|</p> Air since: {first_air_date}</p> : null}
+              <p className="text-center italic py-5 lg:text-left lg:pl-10">{tagline}</p>
+              <div className="">
+                <div className="italic py-5">
+                  
+                  {release_date && (
+                    <p className="text-center lg:text-left lg:pl-10">Release date: {release_date}</p>
+                  )}
+                </div>
+                  <div className="flex items-center justify-center gap-5 lg:justify-start lg:pl-10">
+                  {seasons && <p>Seasons {seasons}</p>}
+                {first_air_date ? (
+                  <p className="flex gap-5 ">
+                    {" "}
+                    <p>|</p> Air since: {first_air_date}
+                  </p>
+                ) : null}
 
                 <p>
-                  {type ? <p className="flex gap-5"> <p>|</p> {type} </p>  : null}
+                  {type ? (
+                    <p className="flex gap-5 ">
+                      {" "}
+                      <p>|</p> {type}{" "}
+                    </p>
+                  ) : null}
                 </p>
+                </div>
               </div>
             </div>
           </div>
@@ -144,7 +156,7 @@ function SingleMovie({
           <div className="flex gap-10 py-3 justify-center md:pl-10 lg:text-4xl lg:gap-10">
             <button
               onClick={() => setOpen(true)}
-              className="flex items-center  bg-white text-black py-3 px-5 lg:py-5 lg:px-10"
+              className="border  px-2 flex items-center text-lg xl:text-2xl"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +178,7 @@ function SingleMovie({
 
             <button
               onClick={handleAddToWatchlist}
-              className=" flex items-center border py-3 px-5 lg:py-5 lg:px-10  hover:bg-slate-800 "
+              className=" border py-3 px-2 flex items-center text-lg xl:text-2xl  hover:bg-slate-800 "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -189,13 +201,12 @@ function SingleMovie({
         </div>
       </div>
 
-      <div className="lg:w-3/4 lg:absolute lg:right-[0px] top-4 ">
-        <div className="md:absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent"></div>
+      <div className="w-full right-[0px] top-4 lg:w-3/4 lg:absolute lg:right-[0px] ">
+        <div className=" md:absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent"></div>
         <img
-          src={`https://image.tmdb.org/t/p/w500/${backgroundImage}`}
+          src={`https://image.tmdb.org/t/p/original/${backgroundImage}`}
           alt={title}
-          className="w-full h-full block"
-          style={{ objectFit: "cover" }}
+          className="w-full h-screen bg-cover bg-no-repeat"
         />
       </div>
     </div>

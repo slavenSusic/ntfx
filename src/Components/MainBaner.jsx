@@ -15,10 +15,10 @@ function MainBaner({ movies, props }) {
       const newIndex = Math.floor(Math.random() * movies.results.length);
       setRandomIndex(newIndex);
       setRandomMovie(movies.results[newIndex]);
-    }, 8000); // Change the interval duration as desired (in milliseconds)
+    }, 8000); 
 
     return () => {
-      clearInterval(interval); // Clean up the interval on component unmount
+      clearInterval(interval); 
     };
   }, [movies.results]);
 
@@ -30,14 +30,14 @@ function MainBaner({ movies, props }) {
     <>
       <div className="w-full bg-slate-900 relative">
         <div className="flex flex-row-reverse">
-          <div className="pl-5 absolute top-[150px] left-[50px]  text-white text-2xl z-10 m-w-[500px]">
+          <div className="pl-5 absolute top-[60px] left-[50px]  text-white text-2xl z-10 m-w-[500px]">
             <div className="flex justify-left items-center ">
               <h2 className="text-5xl">{randomMovie.title}</h2>
              
              
             </div>
             ({randomMovie.release_date.toString().slice(0, 4)})
-
+            <h2 className="text-2xl w-[700px]">{randomMovie.overview.toString().split(/\s+/).slice(0, 15).join(" ")}...</h2>
             <div className="py-10">
               <div className="flex">
                 <p className="">
@@ -47,7 +47,7 @@ function MainBaner({ movies, props }) {
                     {randomMovie.vote_average.toString().slice(0, 3)}
                   </span>
                 </p>
-                <span className="absolute top-[103px] left-[114px] ">
+                <span className="absolute top-[168px] left-[114px] ">
                   <CircularProgress
                     variant="determinate"
                     size="4rem"
@@ -84,9 +84,9 @@ function MainBaner({ movies, props }) {
           <div className="relative  w-2/3">
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-transparent to-transparent"></div>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${randomMovie.backdrop_path}`}
+              src={`http://image.tmdb.org/t/p/original/${randomMovie.backdrop_path}`}
               alt={randomMovie.title}
-              className="w-full h-4/3"
+              className="w-full h-full object-cover"
               style={{ imageRendering: "auto" }}
             />
           </div>

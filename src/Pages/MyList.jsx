@@ -61,7 +61,7 @@ function MyList({ movie }) {
                 className="w-full cursor-pointer"
               />
        <p className='text-white'> {movie.id}</p>
-            <button className='text-white' onClick={() => handleRemove(movie.id)}>Delete from watchlist</button>
+            <button className='text-white border py-2 px-3' onClick={() => handleRemove(movie.id)}>Delete from watchlist</button>
             <h1 className="text-white text-3xl text-center">
               {movie.title} {movie.name}
             </h1>
