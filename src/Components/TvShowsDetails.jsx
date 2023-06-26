@@ -35,7 +35,7 @@ function TvShowsDetails() {
     media= {media_type}
     poster={poster_path}
       title={title}
-      backgroundImage={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
+      backgroundImage={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
       overview={overview}
       release={release_date}
       seasons={number_of_seasons}

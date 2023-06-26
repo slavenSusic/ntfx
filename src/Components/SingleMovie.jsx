@@ -1,5 +1,6 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import ModalVideo from "react-modal-video";
+;
 import { useState, useEffect } from "react";
 import { useWatchlistStore } from "../utility/WatchListStore";
 import Snackbar from "@mui/material/Snackbar";
@@ -29,6 +30,7 @@ function SingleMovie({
   const [isOpen, setOpen] = useState(false);
   const [videoId, setVideoId] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  
 
   useEffect(() => {
     fetchVideoId();
@@ -45,9 +47,10 @@ function SingleMovie({
 
       const response = await fetch(apiUrl);
       const data = await response.json();
-
+       console.log(data)
       if (data.results && data.results.length > 0) {
         setVideoId(data.results[0].key);
+        console.log(data.results[0].key)
       }
     } catch (error) {
       console.error("Error fetching video ID:", error);
@@ -86,8 +89,9 @@ function SingleMovie({
         videoId={videoId}
         onClose={() => setOpen(false)}
       />
-
+  
       <div className="flex flex-col-reverse">
+     
         <div className=" text-white text-center z-10 lg:flex flex-col items-start">
           <div className="">
             <h2 className="pt-5 font-bold text-5xl md:text-4xl lg:text-left lg:pl-10 lg:pt- lg:text-6xl">
@@ -136,7 +140,7 @@ function SingleMovie({
                 {first_air_date ? (
                   <p className="flex gap-5 ">
                     {" "}
-                    <p>|</p> Air since: {first_air_date}
+                    <p>|</p> On air since: {first_air_date}
                   </p>
                 ) : null}
 
@@ -206,7 +210,7 @@ function SingleMovie({
         <img
           src={`https://image.tmdb.org/t/p/original/${backgroundImage}`}
           alt={title}
-          className="w-full h-screen bg-cover bg-no-repeat"
+          className="w-full lg:h-screen bg-cover bg-no-repeat"
         />
       </div>
     </div>

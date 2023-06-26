@@ -71,7 +71,7 @@ function MainBaner({ movies, props }) {
                 return (
                   <p key={id} className="border px-2 pb-1">
                     <p className="inline-block text-sm">
-                      {genre ? genre.name : "zzz"}
+                      {genre ? genre.name : ""}
                     </p>
                   </p>
                 );
