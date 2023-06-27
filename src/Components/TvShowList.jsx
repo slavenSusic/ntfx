@@ -22,15 +22,7 @@ console.log(loaderData)
     <TelevisionShow loaderDataf={trending} title={'Trending'}/>
     <TelevisionShow loaderDataf={airingToday} title={'On air today'}/>
     <TelevisionShow loaderDataf={topRatedTvshows} title={'Top rated shows'}/>
-
-
-
-
-    {/* <ShowComponent loaderDataf={trending} />
-      <ShowComponent loaderDataf={airingToday} /> */}
-      {/* <MovieOther loaderDataf={requestTrending} title={'Trending Movies'} />
-      <MovieOther loaderDataf={requestHorror} title={'Horror movies'} />
-      <MovieOther loaderDataf={requestUpcoming} title={ 'Upcoming Movies'} /> */}
+  
       </>
   )
 }

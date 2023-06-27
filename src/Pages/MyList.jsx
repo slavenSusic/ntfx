@@ -62,16 +62,16 @@ function MyList({ movie }) {
       <div className="text-white text-center text-5xl">{watchlistEmpty && <p>Add some movies to watch!</p>}</div>
       <div className="grid grid-cols-5">
         {watchlist.map((movieItem) => (
-          <div key={movieItem.id} className="pt-20 w-[250px] pl-10">
+          <div key={movieItem.id} className="pt-20 w-[250px] pl-10 flex flex-col gap-3">
             <img
               onClick={() => handleImageClick(movieItem.id)}
               src={`https://image.tmdb.org/t/p/w500/${movieItem.poster}`}
               alt={movieItem.title}
               className="w-full cursor-pointer"
             />
-            <p className="text-white">{movieItem.id}</p>
-            <button className="text-white border py-2 px-4" onClick={() => handleImageClick(movieItem.id)}>FETCH</button>
-            <button className="text-white border py-2 px-3" onClick={() => handleRemove(movieItem.id)}>
+      
+           
+            <button className=" text-white border py-2 px-3 hover:bg-red-500" onClick={() => handleRemove(movieItem.id)}>
               Delete from watchlist
             </button>
             <h1 className="text-white text-3xl text-center">
