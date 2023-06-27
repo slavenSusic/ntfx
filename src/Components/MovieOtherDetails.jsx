@@ -33,7 +33,7 @@ function MoviesOtherDetails() {
       media={media_type}
       poster={poster_path}
         title={title}
-        backgroundImage={`https://image.tmdb.org/t/p/origina/${backdrop_path}`}
+        backgroundImage={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
         overview={overview}
         release={release_date}
         id={id}
